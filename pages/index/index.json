@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-button": "../../miniprogram_npm/@vant/weapp/button",
+    "van-radio": "../../miniprogram_npm/@vant/weapp/radio",
+    "van-radio-group": "../../miniprogram_npm/@vant/weapp/radio-group",
+    "van-field": "../../miniprogram_npm/@vant/weapp/field",
+    "van-calendar": "../../miniprogram_npm/@vant/weapp/calendar",
+    "van-popup": "../../miniprogram_npm/@vant/weapp/popup",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast",
+    "van-rate": "../../miniprogram_npm/@vant/weapp/rate"
+  }
+}
