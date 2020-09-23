@@ -48,9 +48,7 @@ Page({
   onCalConfirm(e) {
     this.setData({
       show: false,
-      form: {
-        date:this.formatDate(e.detail)
-      }
+      ['form.date']: this.formatDate(e.detail)
     })
   },
 
