@@ -1,3 +1,5 @@
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+
 Page({
 
   /**
@@ -5,6 +7,7 @@ Page({
    */
   data: {
     form: {
+      openid: '',
       company: '',
       confirm: '',
       countOffset: '',
@@ -52,10 +55,77 @@ Page({
     })
   },
 
+  //  表单验证
+  validate(values) {
+    //  验证单位
+    if (values.company.length < 1) {
+      Toast.fail('请填写单位')
+      return false
+    }
+
+    //  验证送货收货确认
+    if (values.confirm.length < 1) {
+      Toast.fail('请选择送货收货确认情况')
+      return false
+    }
+
+    //  验证送货品种、数量偏差情况
+    if (values.countOffset.length < 1) {
+      Toast.fail('请选择送货品种、数量偏差情况')
+      return false
+    }
+
+    //  验证送货时间、地点偏差情况
+    if (values.timeOffset.length < 1) {
+      Toast.fail('请选择送货时间、地点偏差情况')
+      return false
+    }
+
+    //  验证送货师傅礼貌情况
+    if (values.attitude.length < 1) {
+      Toast.fail('请选择送货师傅是否礼貌')
+      return false
+    }
+
+    //  验证包装完好情况
+    if (values.box.length < 1) {
+      Toast.fail('请选择包装完好情况')
+      return false
+    }
+
+    //  验证配送时间
+    if (values.date.length < 1) {
+      Toast.fail('请选择送货时间')
+      return false
+    }
+
+    //  验证送货渠道
+    if (values.channel.length < 1) {
+      Toast.fail('请选择订货渠道')
+      return false
+    }
+
+    //  验证建议
+    if (values.sugguestion.length < 1) {
+      Toast.fail('请填写问题或建议')
+      return false
+    }
+
+    //  验证满意度
+    if (values.rate.length < 1) {
+      Toast.fail('请给满意度打分')
+      return false
+    }
+  },
+
   //  表单提交
   formSubmit() {
+    if (this.validate(this.data.form)) {
+      
+    }
     console.log(this.data.form)
   },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -64,87 +134,6 @@ Page({
   
   },
 
-  //  处理是否确认送货信息
-  // handleConfirmChange(e) {
-  //   console.log(`confirm: ${e.detail}`)
-  //   this.setData({
-  //     form: {
-  //       confirm: e.detail
-  //     }
-  //   })
-  // },
-
-  // //  数量、种类是否偏差
-  // handleCountOffsetChange(e) {
-  //   console.log(`countOffset: ${e.detail}`)
-  //   this.setData ({
-  //     form: {
-  //       countOffset: e.detail
-  //     }
-  //   })
-  // },
-
-  // //  时间、地点是否偏差
-  // handleTimeOffsetChange(e) {
-  //   console.log(`timeOffset: ${e.detail}`)
-  //   this.setData ({
-  //     form: {
-  //       timeOffset: e.detail
-  //     }
-  //   })
-  // },
-
-  // //  处理态度是否良好
-  // handleAttitudeChange(e) {
-  //   console.log(`attitude: ${e.detail}`)
-  //   this.setData ({
-  //     form: {
-  //       attitude: e.detail
-  //     }
-  //   })
-  // },
-
-  // //  处理包装是否完好
-  // handleBoxChange(e) {
-  //   this.setData ({
-  //     form: {
-  //       box: e.detail
-  //     }
-  //   })
-  // },
-
-  //  处理选择配送具体日期
-  // handleDateChange(e) {
-  //   this.setData ({
-  //     form: {
-  //       date: e.detail
-  //     }
-  //   })
-  // },
-
-  //  处理选择渠道
-  // handleChannelChange(e) {
-  //   this.setData ({
-  //     form: {
-  //       channel: e.detail
-  //     }
-  //   })
-  // },
-
-  //  处理其他建议
-
-  //  处理满意度星级
-  // handleRateChange(e) {
-  //   this.setData ({
-  //     form: {
-  //       rate: e.detail
-  //     }
-  //   })
-  // },
-
-  submit(e) {
-    console.log(e)
-  }
-
+ 
 
 })
