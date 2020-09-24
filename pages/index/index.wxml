@@ -26,61 +26,61 @@
     </view>
     <view class="title">1. 您的单位名称是：</view>
     <van-field value="{{ form.company }}" data-key="form.company" placeholder="输入您的单位名称" clearable
-      bind:change="onChange" />
+      bind:change="onChange" disabled="{{ isSubmited }}"/>
 
     <view class="title">2. 送货前或送货后，销售伙伴是否有跟你确认过送货信息或收货情况？</view>
-    <van-radio-group value="{{ form.confirm }}" data-key="form.confirm" bind:change="onChange">
+    <van-radio-group value="{{ form.confirm + '' }}" data-key="form.confirm" bind:change="onChange" disabled="{{ isSubmited }}">
       <van-radio name="1" checked-color="#f6df00">是</van-radio>
       <van-radio name="2" checked-color="#f6df00">否</van-radio>
     </van-radio-group>
 
     <view class="title">3. 送货品种、数量有没有出错或者有大的偏差给您带来不便？</view>
-    <van-radio-group value="{{ form.countOffset }}" data-key="form.countOffset"
-      bind:change="onChange">
+    <van-radio-group value="{{ form.countoffset + '' }}" data-key="form.countoffset"
+      bind:change="onChange" disabled="{{ isSubmited }}">
       <van-radio name="1" checked-color="#f6df00">是</van-radio>
       <van-radio name="2" checked-color="#f6df00">否</van-radio>
     </van-radio-group>
 
     <view class="title">4. 送货时间、地点有没有出错或者有大的偏差给您带来不便？</view>
-    <van-radio-group value="{{ form.timeOffset }}" data-key="form.timeOffset" bind:change="onChange">
+    <van-radio-group value="{{ form.timeoffset + '' }}" data-key="form.timeoffset" bind:change="onChange" disabled="{{ isSubmited }}">
       <van-radio name="1" checked-color="#f6df00">是</van-radio>
       <van-radio name="2" checked-color="#f6df00">否</van-radio>
     </van-radio-group>
 
     <view class="title">5. 送货师傅服务态度是否良好，是否比较礼貌？</view>
-    <van-radio-group value="{{ form.attitude }}" data-key="form.attitude" bind:change="onChange">
+    <van-radio-group value="{{ form.attitude + '' }}" data-key="form.attitude" bind:change="onChange" disabled="{{ isSubmited }}">
       <van-radio name="1" checked-color="#f6df00">是</van-radio>
       <van-radio name="2" checked-color="#f6df00">否</van-radio>
     </van-radio-group>
 
     <view class="title">6. 送货过来的外纸箱或礼盒包装是否整洁完好、标识清楚？</view>
-    <van-radio-group value="{{ form.box }}" data-key="form.box" bind:change="onChange">
-      <van-radio name="1" checked-color="#f6df00">整洁完好、标志清楚</van-radio>
+    <van-radio-group value="{{ form.box + '' }}" data-key="form.box" bind:change="onChange" disabled="{{ isSubmited }}">
+      <van-radio name="1" checked-color="#f6df00">整洁完好、标识清楚</van-radio>
       <van-radio name="2" checked-color="#f6df00">不是整洁完好</van-radio>
       <van-radio name="3" checked-color="#f6df00">标识不清楚</van-radio>
       <van-radio name="4" checked-color="#f6df00">其他</van-radio>
     </van-radio-group>
 
     <view class="title">7. 配送时间</view>
-    <van-field value="{{ form.date }}" placeholder="选择配送时间" readonly data-key="form.date"
-      bindtap="onDateSelected" />
+    <van-field value="{{ form.date + '' }}" placeholder="选择配送时间" readonly data-key="form.date"
+      bindtap="onDateSelected" disabled="{{ isSubmited }}"/>
 
     <view class="title">8. 订购渠道</view>
-    <van-radio-group value="{{ form.channel }}" data-key="form.channel" bind:change="onChange">
+    <van-radio-group value="{{ form.channel + '' }}" data-key="form.channel" bind:change="onChange" disabled="{{ isSubmited }}">
       <van-radio name="1" checked-color="#f6df00">门店</van-radio>
       <van-radio name="2" checked-color="#f6df00">行政</van-radio>
     </van-radio-group>
 
     <view class="title">9. 有没有其他问题和建议？</view>
     <van-field type="textarea" value="{{ form.sugguestion }}" data-key="form.sugguestion" autosize
-      input-class="text-area" input-class="text-area" bind:change="onChange" />
+      input-class="text-area" input-class="text-area" bind:change="onChange" disabled="{{ isSubmited }}"/>
 
     <view class="title">10. 整体满意度</view>
     <van-rate value="{{ form.rate }}" data-key="form.rate" icon="like" void-icon="like-o"
-      bind:change="onChange" />
+      bind:change="onChange" disabled="{{ isSubmited }}"/>
 
     <view class="submit-btn">
-      <van-button bind:click="formSubmit" color="#f5d317" type="primary" size="small">提交</van-button>
+      <van-button bind:click="formSubmit" color="#f5d317" type="primary" disabled="{{ isSubmited }}" size="small" >提交</van-button>
     </view>
     <van-calendar show="{{ show }}" min-date="2020-09-01" bind:close="onCalClose" bind:confirm="onCalConfirm" />
 

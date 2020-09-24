@@ -38,7 +38,7 @@ page {
 .title text {
   padding: 6rpx;
   letter-spacing: 4rpx;
-  text-shadow: 4rpx 4rpx 4rpx #777;
+  text-shadow: 4rpx 4rpx 4rpx #555;
 }
 
 .devider {

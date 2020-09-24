@@ -1,4 +1,5 @@
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import api from '../../utils/api'
 
 Page({
 
@@ -10,8 +11,8 @@ Page({
       openid: '',
       company: '',
       confirm: '',
-      countOffset: '',
-      timeOffset: '',
+      countoffset: '',
+      timeoffset: '',
       attitude: '',
       box: '',
       date: '',
@@ -28,6 +29,7 @@ Page({
     this.setData({ [key]: e.detail })
   },
 
+  //  显示日期选择对话框
   onDateSelected() {
     this.setData({
       show: true
@@ -70,13 +72,13 @@ Page({
     }
 
     //  验证送货品种、数量偏差情况
-    if (values.countOffset.length < 1) {
+    if (values.countoffset.length < 1) {
       Toast.fail('请选择送货品种、数量偏差情况')
       return false
     }
 
     //  验证送货时间、地点偏差情况
-    if (values.timeOffset.length < 1) {
+    if (values.timeoffset.length < 1) {
       Toast.fail('请选择送货时间、地点偏差情况')
       return false
     }
@@ -116,14 +118,46 @@ Page({
       Toast.fail('请给满意度打分')
       return false
     }
+
+    return true
   },
 
   //  表单提交
   formSubmit() {
+    
     if (this.validate(this.data.form)) {
       
+      const openid = wx.getStorageSync('openid')
+      
+      this.setData({
+        ['form.openid']: openid
+      })
+
+      Toast.loading({
+        message: '加载中...',
+        forbidClick: true,
+        mask: true
+      });
+
+      wx.request({
+        url: api.addNaireUrl,
+        method: 'POST',
+        data: this.data.form,
+        success: (result) => {
+          if (result.data.meta.status !== 201) {
+            Toast.fail('提交失败')
+            return
+          }
+          Toast.clear
+          
+          Toast.success('提交成功！')
+          this.setData({
+            isSubmited: true
+          })
+        }
+      },
+      )
     }
-    console.log(this.data.form)
   },
 
 
